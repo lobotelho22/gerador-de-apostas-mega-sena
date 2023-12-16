@@ -11,13 +11,21 @@ namespace gerador_de_aposta.Models
 
         private int[] dezenas = new int[60];
 
-        List<int> listaMaisSorteados = new List<int>();
+        List<int> listaDezenas = new List<int>();
 
-        private void PopulateLista()
+        private void PopulateLista(int[] listaMatriz)
         {
-            foreach (var item in maisSorteados)
+            foreach (var item in listaMatriz)
             {
-                listaMaisSorteados.Add(item);
+                listaDezenas.Add(item);
+            }
+        }
+
+        private void PopulateDezenas()
+        {
+            for (var item = 0; item < dezenas.Length; item += 1)
+            {
+                dezenas[item] = item + 1;
             }
         }
 
@@ -28,11 +36,11 @@ namespace gerador_de_aposta.Models
             return msgReturn;
         }
 
-        public string ApostaEntreOsMais()
+        public string CriarApostaMaisSorteados()
         {
             int[] aposta = new int[6];
             Random rnd = new Random();
-            PopulateLista();
+            PopulateLista(maisSorteados);
 
             int i = 0;
             
@@ -40,7 +48,33 @@ namespace gerador_de_aposta.Models
             {
                 int limit = maisSorteados.Length - 1;
                 int index = rnd.Next(0, limit);
-                int num = listaMaisSorteados[index];
+                int num = listaDezenas[index];
+
+                if (!aposta.Contains(num))
+                {
+                    aposta[i] = num;
+                    i += 1;
+                }
+            }
+
+            Array.Sort(aposta);
+            return $"Sua aposta: {string.Join(", ", aposta)}";
+        }
+
+         public string CriarAposta()
+        {
+            int[] aposta = new int[6];
+            Random rnd = new Random();
+            PopulateDezenas();
+            PopulateLista(dezenas);
+
+            int i = 0;
+            
+            while (aposta.Contains(0))
+            {
+                int limit = dezenas.Length - 1;
+                int index = rnd.Next(0, limit);
+                int num = listaDezenas[index];
 
                 if (!aposta.Contains(num))
                 {

@@ -13,6 +13,7 @@ while (exibirMenu)
 {
     Console.WriteLine("1 - Exibir os números mais sorteados da Mega Sena");
     Console.WriteLine("2 - Criar aposta entre os mais sorteados");
+    Console.WriteLine("3 - Criar aposta padrão");
     Console.WriteLine("4 - Sair");
 
     switch(Console.ReadLine())
@@ -22,7 +23,11 @@ while (exibirMenu)
             break;
         
         case "2":
-            Console.Write(aposta.ApostaEntreOsMais());
+            Console.Write(aposta.CriarApostaMaisSorteados());
+            break;
+
+        case "3":
+            Console.Write(aposta.CriarAposta());
             break;
 
         case "4":
