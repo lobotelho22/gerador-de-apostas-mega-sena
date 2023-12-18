@@ -27,5 +27,5 @@ dotnet run
 Este projeto foi desenvolvido por Carlos Eduardo Santos.
 
 ## Contato
-Twitter: @lobotelho22
-LinkedIn: lobotelho22
+[Twitter](https://twitter.com/lobotelho22)
+[LinkedIn](https://www.linkedin.com/in/eduardosantos0418/)
